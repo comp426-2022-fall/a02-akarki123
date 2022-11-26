@@ -18,8 +18,18 @@ if (args.h) {
 }
 
 const timezone = moment.tz.guess();
-const latitude = args.n || (args.s * -1)
-const longitude = args.e || (args.w * -1)
+const latitude = args.n || (args.s * -1);
+const longitude = args.e || (args.w * -1);
 
 const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&daily=precipitation_hours&timezone=' + timezone);
 const data = await response.json();
+
+const days = args.d;
+
+if (days == 0) {
+	console.log("today.");
+} else if (days > 1) {
+	console.log("in" + days + "days.");
+} else {
+	console.log("tomorrow.");
+}
