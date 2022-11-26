@@ -2,6 +2,7 @@
 
 import minimist from 'minimist';
 import moment from 'moment-timezone';
+import fetch from 'node-fetch';
 
 const args = minimist(process.argv.slice(2));
 
@@ -17,3 +18,7 @@ if (args.h) {
 }
 
 const timezone = moment.tz.guess();
+const latitude =
+const longitude =
+const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&daily=precipitation_hours&timezone=' + timezone);
+const data = await response.json();
